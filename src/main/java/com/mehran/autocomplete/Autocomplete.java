@@ -11,7 +11,7 @@ public class Autocomplete {
 	 // Initializes the data structure from the given array of terms.
     public Autocomplete(Term[] terms) {
     	if (terms == null){
-    		throw new NullPointerException("Terms can't be null");
+    		throw new NullPointerException("no null");
     	}
     	this.terms = new Term[terms.length];
     	for (int i = 0; i < terms.length; i++) 
@@ -40,20 +40,21 @@ public class Autocomplete {
 
  // Returns the number of terms that start with the given prefix.
     public int numberOfMatches(String prefix) {
-    	int i, j;
-    	if (prefix == null) throw new NullPointerException("Prefix can't be null");
+    	int indexEnd, indexFirst, result;
+    	if (prefix == null) throw new NullPointerException("no null");
     	
-    	i = BinarySearchDeluxe.lastIndexOf (terms, new Term(prefix, 0), Term.byPrefixOrder(prefix.length()));
-    	j = BinarySearchDeluxe.firstIndexOf(terms, new Term(prefix, 0), Term.byPrefixOrder(prefix.length()));
-		return 1 + i - j;
+    	indexEnd = BinarySearchDeluxe.lastIndexOf (terms, new Term(prefix, 0), Term.byPrefixOrder(prefix.length()));
+    	indexFirst = BinarySearchDeluxe.firstIndexOf(terms, new Term(prefix, 0), Term.byPrefixOrder(prefix.length()));
+		result = 1 + indexEnd - indexFirst;
+		return result;
     }  
     
      
     public static void main (String[] args) {
-    	Term[] terms = {new Term("hair", 5), new Term("Hair", 1), new Term("HAIR", 2),
+    	Term[] terms = {new Term("hair", 5), new Term("Hair", 1), new Term("HAIR", 1.8),
     					new Term("leg", 10), new Term("Leg", 3), new Term("LEg", 7), new Term("LEG", 4),
     					new Term("hand", 0), new Term("Hand", 20), new Term("HAND", 30),
-    					new Term("head", 8), new Term("Head", 2), new Term("HEAD", 0)};
+    					new Term("head", 8), new Term("Head", 1.9), new Term("HEAD", 0)};
     	
     	    	
     	Autocomplete autocomplete = new Autocomplete(terms);
@@ -64,11 +65,15 @@ public class Autocomplete {
     	}
 
     	System.out.println("-----------------------------------");
-    	System.out.println(autocomplete.numberOfMatches("H"));
+    	System.out.println(autocomplete.numberOfMatches("L"));
     	System.out.println("-----------------------------------");
     	
-    	Term[] stuff = autocomplete.allMatches("L");
+    	Term[] 
+    			goal = autocomplete.allMatches("H");
     	
-    	for (Term term : stuff) System.out.println(term);
+    	for(int i = 0; i < goal.length; i++){
+    		System.out.print(goal[i]);
+    		System.out.println();
+    	}
     }
 }
