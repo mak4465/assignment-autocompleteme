@@ -1,7 +1,6 @@
 package com.mehran.autocomplete;
 
 import java.util.Arrays;
-
 import edu.princeton.cs.algorithms.Insertion;
 
 public class Autocomplete {
