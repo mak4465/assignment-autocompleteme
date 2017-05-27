@@ -8,13 +8,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class TestJUnitBinarySearchDeluxe {
-	
-	Term term1 = new Term("Debbie", 3);
-	Term term2 = new Term("Abcd", 8);
-	Term term3 = new Term("Cathy", 1.55555);
-	Term term4 = new Term("Abbcd", 0.1);
 
-	Term[] terms = new Term[] { term1, term2, term3, term4 };
+	Term[] array = new Term[] { new Term("Michael", 24), new Term("Alex", 4), new Term("Sara", 7) };
 
 	
 	@Test (expected=NullPointerException.class)
@@ -25,13 +20,13 @@ public class TestJUnitBinarySearchDeluxe {
 	
 	@Test (expected=NullPointerException.class)
     public void testFirstIndexKeyNullThrowNullPointerException() throws NullPointerException {
-		BinarySearchDeluxe.firstIndexOf (terms, null, Collections.reverseOrder());
+		BinarySearchDeluxe.firstIndexOf (array, null, Collections.reverseOrder());
 		throw new NullPointerException();
     }
 	
 	@Test (expected=NullPointerException.class)
     public void testFirstIndexComparatorNullThrowNullPointerException() throws NullPointerException {
-		BinarySearchDeluxe.firstIndexOf (terms, 44, null);
+		BinarySearchDeluxe.firstIndexOf (array, 44, null);
 		throw new NullPointerException();
     }
 	
