@@ -43,10 +43,10 @@ public class TestJUnitAutoComplete {
 	@Test
 	public void testNumberOfMatches(){
 		Autocomplete autoComplete = new Autocomplete(queries);
-		int noOfMatches = autoComplete.numberOfMatches("H");
+		int NumberOfMatches = autoComplete.numberOfMatches("H");
     	
 		int expectedMatches = 2;
-    	assertEquals(expectedMatches, noOfMatches);
+    	assertEquals(expectedMatches, NumberOfMatches);
     }
 
 }
